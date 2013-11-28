@@ -12,6 +12,12 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url" : "http://satis.dcp-tools-01.magic-technik.de"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
@@ -21,11 +27,13 @@
         "symfony/monolog-bundle": "2.3.*",
         "sensio/distribution-bundle": "2.3.*",
         "sensio/generator-bundle": "2.3.*",
-        "incenteev/composer-parameter-handler": "~2.0",
         "tedivm/stash-bundle": "0.2.*",
-        "ezsystems/ezpublish-kernel": "5.3.*@dev",
         "ezsystems/demobundle": "@dev",
+        "ezsystems/ezpublish-kernel": "5.3.*@dev",
+        "ezsystems/ezpublish-legacy": "v2013.09.0",
         "ezsystems/comments-bundle": "@dev",
+        "ezsystems/ezpublish-legacy-installer": "*",
+        "ezsystems/ezautosave-ls" : "@dev",
         "egulias/listeners-debug-command-bundle": "1.6.*",
         "white-october/pagerfanta-bundle": "1.0.*",
         "zetacomponents/archive": "@dev",
@@ -59,16 +67,15 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "eZ\\Bundle\\EzPublishLegacyBundle\\Composer\\ScriptHandler::installAssets",
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::dumpAssets",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
+            "MyVideo\\Composer\\ScriptHandler::generateSymLinks"
         ],
         "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
@@ -79,7 +86,8 @@
     },
     "config": {
         "process-timeout": 3000,
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "cache-dir": "{$home}/ezpublish/cache"
     },
     "extra": {
         "symfony-app-dir": "ezpublish",

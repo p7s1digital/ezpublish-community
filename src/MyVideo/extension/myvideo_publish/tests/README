@@ -1,0 +1,5 @@
+# Unit-Tests
+# ----------
+# So werden alle Tests der Gruppe "myvideo" ausgeführt
+# $ cd EZPUBLISH-LEGACY-DIR
+# $ php tests/runtests.php --verbose --debug --dsn postgresql://postgres:postgres@localhost/ez_test --group=myvideo

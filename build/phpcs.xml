@@ -1,0 +1,6 @@
+<ruleset name="name-of-your-coding-standard">
+    <description>Description of your coding standard</description>
+
+    <!-- Include the whole PSR-2 standard -->
+    <rule ref="PSR2"/>
+</ruleset>

@@ -1,0 +1,39 @@
+<?php /*
+# settings for environment specific services
+# File generated: [% PERL %] use Sys::Hostname; print scalar localtime() ." on host ". hostname()[% END %]
+
+# Redis Server
+[RedisSettings][% SET redis = cms.redis_master.split(':') %]
+Host=[% redis.0 %]
+Port=[% redis.1 %]
+Database=0
+
+# Riak Server
+[RiakSettings]
+CDNHost=[% cms.scaler_hostname %]
+Port=[% cms.riak_port %]
+SourcePrefix=var/ezflow_site/storage/images/
+# TargetPrefix entspricht dem Bucket
+TargetPrefix=[% cms.riak_bucket %]
+
+[% FOREACH server IN cms.riak_server %]
+Hosts[]=[% server %]
+[% END %]
+
+# Frontend
+[Frontend]
+FrontendURL=[% cms.frontend_url %]
+PreviewURL=[% cms.preview_url %]
+
+# Voting
+[Voting]
+VotingURL=http://[% frontend.voting_service_host %]:81
+VotingSalt=V3RY_sECR31_s4l1
+
+# HornetQ
+[HornetQ]
+Active=[% hornetq.active %]
+Host=http://[% hornetq.host %]
+Port=[% hornetq.port %]
+Path=[% hornetq.path %]
+*/ ?>

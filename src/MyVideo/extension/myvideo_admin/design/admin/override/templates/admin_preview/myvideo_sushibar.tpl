@@ -1,0 +1,1 @@
+{include uri='design:parts/list-all-attributes.tpl'}

@@ -1,0 +1,29 @@
+{
+    "description" : "MyVideo Menu Item",
+    "type" : "object",
+    "properties" : {
+        "type" : {
+            "title" : "Content Type Name",
+            "type" : "string",
+            "required" : true,
+            "enum" : ["menu_item"]
+        },
+        "name" : {
+            "title" : "Video ID",
+            "type" : "String",
+            "required" : true
+        },
+        "url" : {
+            "title" : "URL",
+            "type" : "string",
+            "required" : true
+        },
+        "ugcId" : {
+            "title" : "UGC ID",
+            "type" : "string",
+            "pattern" : "/[A-Za-z0-9]/",
+            "required" : true
+        }
+    },
+    "additionalProperties" : false    
+}

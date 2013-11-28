@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Ant build targets for deploy, a tar file is generated. -->
+
+<project name="ezpublish" default="build" basedir=".">
+
+    <!-- default environment can be overridden on cli for exp.: ant build -Denvironment=integration -->
+    <property name="environment" value="dev" />
+    <!-- load environment configuration -->
+    <property file="${basedir}/build/config/${environment}.ini" />
+    <!-- once defined properties are not overridden, so the order is essential -->
+    <property file="${basedir}/build/config/default.ini" />
+
+    <target name="build" depends="
+        properties-create,
+        configure,
+        install-ez-publish
+    "/>
+
+    <target name="build-package" depends="
+        configure,
+        package
+    "/>
+
+    <target name="configure" description="Copies configuration and replaces parameters with those from property ini file">
+        <copy file="${basedir}/build/config/ezpublish_legacy/settings/override/redis.ini.append.php.dist" tofile="${basedir}/ezpublish/settings/override/redis.ini.append.php" overwrite="true">
+            <filterchain>
+                <expandproperties/>
+            </filterchain>
+        </copy>
+        <exec dir="${basedir}" executable="/usr/bin/perl" failonerror="true">
+            <arg value="${basedir}/bin/ini2template.pl" />
+            <arg value="--environment" />
+            <arg value="/etc/myvideo/default.ini" />
+            <arg value="--template" />
+            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php.tt2" />
+        </exec>
+    </target>
+
+    <target name="build-artifacts-delete" description="Deletes all build artifacts from the project">
+        <exec executable="rm" failonerror="true">
+                <arg line="-rf ezpublish/" />
+        </exec>
+    </target>
+
+    <target name="properties-create" description="Create or update properties files for the project">
+        <exec dir="${basedir}" executable="bin/generateBuildProperties.sh" failonerror="true" />
+    </target>
+
+    <target name="install-ez-publish" description="Install ezPublish and it's extensions.">
+        <exec dir="${basedir}" executable="php composer.phar update" failonerror="true" />
+    </target>
+
+    <target name="package" description="Create a tar file of all files">
+        <delete dir="/tmp/package/myvideo-ezpublish" />
+        <copy todir="/tmp/package/myvideo-ezpublish">
+                <fileset dir="${basedir}" />
+        </copy>
+        <exec dir="/tmp/package/myvideo-ezpublish" executable="find" failonerror="true">
+                <arg value="." />
+                <arg line=" -name .git -exec rm -rf {} \ ;" />
+        </exec>
+        <exec executable="tar" failonerror="true">
+                <arg line=" --create --file myvideo-ezpublish-${version}.tar.gz --gzip --directory /tmp/package/myvideo-ezpublish/ ./" />
+        </exec>
+    </target>
+    
+    <target name="phpcs-ci"
+            description="Find coding standard violations using PHP_CodeSniffer creating a log file for the continuous integration server">
+        <mkdir dir="${basedir}/build/logs"/>
+        <exec executable="phpcs" output="/dev/null">
+            <arg value="--report=checkstyle"/>
+            <arg value="--report-file=${basedir}/build/logs/checkstyle.xml"/>
+            <arg value="--standard=${basedir}/build/phpcs.xml"/>
+            <arg value="--ignore=*.js,*.css"/>
+            <arg path="${basedir}/src/MyVideo"/>
+        </exec>
+    </target>
+    
+    <target name="phpmd-ci"
+            description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
+        <exec executable="phpmd">
+            <arg path="${basedir}/src/MyVideo"/>
+            <arg value="xml"/>
+            <arg value="${basedir}/build/phpmd.xml"/>
+            <arg value="--reportfile"/>
+            <arg value="${basedir}/build/logs/pmd.xml"/>
+            <arg line="--exclude"/>
+            <arg line="*.js,*.css"/>
+        </exec>
+    </target>
+    
+    <target name="phpcpd" description="Find duplicate code using PHPCPD">
+        <exec executable="phpcpd">
+            <arg value="--log-pmd"/>
+            <arg value="${basedir}/build/logs/pmd-cpd.xml"/>
+            <arg line="--exclude"/>
+            <arg line="*.js,*.css"/>
+            <arg path="${basedir}/src/MyVideo"/>
+        </exec>
+    </target>
+</project>
+

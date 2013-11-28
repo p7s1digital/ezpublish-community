@@ -21,3 +21,8 @@
 /web/.htaccess
 composer.phar
 composer.lock
+/ezpublish/SymfonyRequirements.php
+/ezpublish/bootstrap.php.cache
+/ezpublish/check.php
+/web/css/
+/web/js/

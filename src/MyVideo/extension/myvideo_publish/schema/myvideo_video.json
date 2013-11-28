@@ -1,0 +1,26 @@
+{
+    "description" : "MyVideo Video",
+    "type" : "object",
+    "properties" : {
+        "type" : {
+            "title" : "Content Type Name",
+            "type" : "string"
+        },
+        "id" : {
+            "title" : "Video ID",
+            "type" : "number",
+            "required" : true
+        },
+        "title" : {
+            "title" : "Video Title",
+            "type" : "string",
+            "required" : false
+        },
+        "subTitle" : {
+            "title" : "Video SubTitle",
+            "type" : "string",
+            "required" : false
+        }
+    },
+    "additionalProperties" : false    
+}
