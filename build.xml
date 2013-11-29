@@ -49,7 +49,12 @@
     </target>
 
     <target name="install-ez-publish" description="Install ezPublish and it's extensions.">
-        <exec dir="${basedir}" executable="php composer.phar update" failonerror="true" />
+        <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
+		<arg value="composer.phar" />
+		<arg value="install" />
+		<arg value="--prefer-dist" />
+		<arg value="-vvv" />
+	</exec>
     </target>
 
     <target name="package" description="Create a tar file of all files">
