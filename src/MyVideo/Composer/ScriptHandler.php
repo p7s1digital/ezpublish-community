@@ -24,20 +24,22 @@ class ScriptHandler extends DistributionBundleScriptHandler
         $legacyVoid = $baseDir . '/ezpublish_legacy';
 
         // linking the extensions into the legacy void
-        $extensionList = ['mxdcommon','myvideo_admin','myvideo_message','myvideo_publish'];
+	$extensionList = array('mxdcommon','myvideo_admin','myvideo_message','myvideo_publish');
         foreach( $extensionList as $extension) {
-            symlink($legacyVoid.'/extension', $baseDir.'/src/MyVideo/extension/'.$extension);
+	    if (false===file_exists($legacyVoid.'/extension/'.$extension)){ 
+	            symlink($baseDir.'/src/MyVideo/extension/'.$extension, $legacyVoid.'/extension/'.$extension);
+	    }
         }
 
         // linking the settings into the legacy void
-        symlink($legacyVoid.'/settings', $baseDir.'ezpublish/config/settings/siteaccess');
-        symlink($legacyVoid.'/settings', $baseDir.'ezpublish/config/settings/override');
+        // linking the settings into the legacy void
+        if (false === file_exists($legacyVoid . '/settings/siteaccess')) {
+            symlink($baseDir . '/ezpublish/config/legacy_settings/siteaccess', $legacyVoid . '/settings/siteaccess');
+        }
+        if (false === file_exists($legacyVoid . '/settings/override')) {
+            symlink($baseDir . '/ezpublish/config/legacy_settings/override',$legacyVoid . '/settings/override');
+        }
 
-        // and finally linking the various needed legacy directories into the web folder
-        symlink($webDir,$legacyVoid.'/design');
-        symlink($webDir,$legacyVoid.'/extension');
-        symlink($webDir,$legacyVoid.'/share');
-        symlink($webDir,$legacyVoid.'/var');
     }
 
 } 
