@@ -1,0 +1,8 @@
+<?php /*
+[% SET redis = cms.redis_master.split(':') %]
+[Server]
+Host=[% redis.0 %]
+Port=[% redis.1 %]
+Database=0
+
+*/ ?>

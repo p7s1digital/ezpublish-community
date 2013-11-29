@@ -22,11 +22,13 @@
     "/>
 
     <target name="configure" description="Copies configuration and replaces parameters with those from property ini file">
-        <copy file="${basedir}/build/config/ezpublish_legacy/settings/override/redis.ini.append.php.dist" tofile="${basedir}/ezpublish/settings/override/redis.ini.append.php" overwrite="true">
-            <filterchain>
-                <expandproperties/>
-            </filterchain>
-        </copy>
+        <exec dir="${basedir}" executable="/usr/bin/perl" failonerror="true">
+            <arg value="${basedir}/bin/ini2template.pl" />
+            <arg value="--environment" />
+            <arg value="/etc/myvideo/default.ini" />
+            <arg value="--template" />
+            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/redis.ini.append.php.tt2" />
+        </exec>
         <exec dir="${basedir}" executable="/usr/bin/perl" failonerror="true">
             <arg value="${basedir}/bin/ini2template.pl" />
             <arg value="--environment" />
