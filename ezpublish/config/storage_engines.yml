@@ -1,0 +1,15 @@
+services:
+    ezpublish.fieldType.myvideomenuurl.converter:
+        class: %ezpublish.fieldType.ezstring.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: myvideomenuurl, lazy: true, callback: '::create'}
+
+    ezpublish.fieldType.myvideoicondropdown.converter:
+        class: %ezpublish.fieldType.ezinteger.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: myvideoicondropdown, lazy: true, callback: '::create'}
+
+    ezpublish.fieldType.myvideosocialwidget.converter:
+        class: %ezpublish.fieldType.ezinteger.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: myvideosocialwidget, lazy: true, callback: '::create'}

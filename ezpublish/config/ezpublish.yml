@@ -1,0 +1,92 @@
+ezpublish:
+    siteaccess:
+        default_siteaccess: ezflow_site_clean_admin
+        list:
+            - ezflow_site_clean_admin
+        groups:
+            ezflow_site_group:
+                - ezflow_site_clean_admin
+        match:
+            URIElement: '1'
+    system:
+        ezflow_site_group:
+            database:
+                type: pgsql
+                user: ezpublish
+                password: ezpublish
+                server: localhost
+                database_name: ezpublish
+            languages:
+                - ger-DE
+            var_dir: var/ezflow_site
+            image_variations:
+                reference:
+                    reference: null
+                    filters:
+                        - { name: geometry/scaledownonly, params: [600, 600] }
+                small:
+                    reference: reference
+                    filters:
+                        - { name: geometry/scaledownonly, params: [100, 100] }
+                tiny:
+                    reference: reference
+                    filters:
+                        - { name: geometry/scaledownonly, params: [30, 30] }
+                medium:
+                    reference: reference
+                    filters:
+                        - { name: geometry/scaledownonly, params: [200, 200] }
+                large:
+                    reference: reference
+                    filters:
+                        - { name: geometry/scaledownonly, params: [300, 300] }
+                rss:
+                    reference: reference
+                    filters:
+                        - { name: geometry/scale, params: [88, 31] }
+                mainstory1:
+                    reference: null
+                    filters:
+                        - { name: geometry/scalewidth, params: [468] }
+                        - { name: geometry/crop, params: [468, 396, 0, 0] }
+                mainstory2:
+                    reference: null
+                    filters:
+                        - { name: geometry/scalewidth, params: [439] }
+                        - { name: geometry/crop, params: [439, 233, 0, 0] }
+                mainstory3:
+                    reference: null
+                    filters:
+                        - { name: geometry/scalewidth, params: [201] }
+                        - { name: geometry/crop, params: [201, 239, 0, 0] }
+                block2items1:
+                    reference: null
+                    filters:
+                        - { name: geometry/scalewidth, params: [195] }
+                        - { name: geometry/crop, params: [195, 98, 0, 0] }
+                block2items2:
+                    reference: null
+                    filters:
+                        - { name: geometry/scalewidth, params: [195] }
+                        - { name: geometry/crop, params: [195, 98, 0, 0] }
+                block3items3:
+                    reference: null
+                    filters:
+                        - { name: geometry/scalewidth, params: [195] }
+                        - { name: geometry/crop, params: [195, 98, 0, 0] }
+                blockgallery1:
+                    reference: null
+                    filters:
+                        - { name: geometry/scalewidth, params: [126] }
+                        - { name: geometry/crop, params: [126, 84, 0, 0] }
+                imagelarge:
+                    reference: null
+                    filters:
+                        - { name: geometry/scaledownonly, params: [448, 622] }
+        ezflow_site_clean_admin:
+            legacy_mode: true
+    imagemagick:
+        enabled: true
+        path: /usr/bin/convert
+    http_cache:
+        purge_type: local

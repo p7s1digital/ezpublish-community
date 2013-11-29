@@ -1,3 +1,6 @@
+eZDemoBundle:
+    resource: "@eZDemoBundle/Resources/config/routing.yml"
+
 _ezpublishRoutes:
     resource: "@EzPublishCoreBundle/Resources/config/routing/internal.yml"
 
@@ -6,4 +9,4 @@ _ezpublishLegacyRoutes:
 
 _ezpublishRestRoutes:
     resource: "@EzPublishRestBundle/Resources/config/routing.yml"
-    prefix:   %ezpublish_rest.path_prefix%
+    prefix:   /api/ezp/v2

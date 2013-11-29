@@ -1,0 +1,26 @@
+parameters:
+    ezpublish.fieldType.myvideomenuurl.class: %ezpublish.fieldType.ezstring.class%
+    ezpublish.fieldType.myvideoicondropdown.class: %ezpublish.fieldType.ezinteger.class%
+    ezpublish.fieldType.myvideosocialwidget.class: %ezpublish.fieldType.ezinteger.class%
+
+services:
+    ezpublish.fieldType.myvideomenuurl:
+        class: %ezpublish.fieldType.myvideomenuurl.class%
+        parent: ezpublish.fieldType
+        arguments: [ "myvideomenuurl" ]
+        tags:
+            - {name: ezpublish.fieldType, alias: myvideomenuurl}
+
+    ezpublish.fieldType.myvideoicondropdown:
+        class: %ezpublish.fieldType.myvideoicondropdown.class%
+        parent: ezpublish.fieldType
+        arguments: [ "myvideoicondropdown" ]
+        tags:
+            - {name: ezpublish.fieldType, alias: myvideoicondropdown}
+
+    ezpublish.fieldType.myvideosocialwidget:
+        class: %ezpublish.fieldType.myvideosocialwidget.class%
+        parent: ezpublish.fieldType
+        arguments: [ "myvideosocialwidget" ]
+        tags:
+            - {name: ezpublish.fieldType, alias: myvideosocialwidget}
