@@ -13,7 +13,10 @@
     <target name="build" depends="
         properties-create,
         configure,
-        install-ez-publish
+        install-composer,
+        install-ez-publish,
+        generate-autoloads,
+        migrate-database
     "/>
 
     <target name="build-package" depends="
@@ -57,10 +60,18 @@
 
     <target name="install-ez-publish" description="Install ezPublish and it's extensions.">
         <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
-		<arg value="composer.phar" />
-		<arg value="install" />
-		<arg value="--prefer-dist" />
-	</exec>
+            <arg value="composer.phar" />
+            <arg value="install" />
+            <arg value="--prefer-dist" />
+	    </exec>
+    </target>
+
+    <target name="generate-autoloads" description="Generates the ezpublish legacy autoload.php file" >
+        <exec dir="${basedir}/ezpublish_legacy" executable="/usr/bin/php" failonerror="true">
+            <arg value="bin/php/ezpgenerateautoloads.php" />
+            <arg value="-e" />
+            <arg value="-p" />
+        </exec>
     </target>
 
     <target name="migrate-database" description="Install the database migrations" >
