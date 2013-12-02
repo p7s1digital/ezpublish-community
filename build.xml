@@ -48,13 +48,27 @@
         <exec dir="${basedir}" executable="bin/generateBuildProperties.sh" failonerror="true" />
     </target>
 
+    <target name="install-composer" description="Install the composer phar file">
+        <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
+            <arg value="-r" />
+            <arg value="eval('?>'.file_get_contents('https://getcomposer.org/installer'));" />
+        </exec>
+    </target>
+
     <target name="install-ez-publish" description="Install ezPublish and it's extensions.">
         <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
 		<arg value="composer.phar" />
 		<arg value="install" />
 		<arg value="--prefer-dist" />
-		<arg value="-vvv" />
 	</exec>
+    </target>
+
+    <target name="migrate-database" description="Install the database migrations" >
+        <exec dir="${basedir}" executable="/bin/bash" failonerror="true">
+            <arg value="bin/migrations.sh" />
+            <arg value="migrations:migrate" />
+            <arg value="--no-interaction" />
+        </exec>
     </target>
 
     <target name="package" description="Create a tar file of all files">
