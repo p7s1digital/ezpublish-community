@@ -16,7 +16,8 @@
         install-composer,
         install-ez-publish,
         generate-autoloads,
-        migrate-database
+        migrate-database,
+        link-web-dir
     "/>
 
     <target name="build-package" depends="
@@ -32,12 +33,20 @@
             <arg value="--template" />
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/redis.ini.append.php.tt2" />
         </exec>
+        <exec dir="${basedir}" executable="/bin/cp">
+            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/redis.ini.append.php" />
+            <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
+        </exec>
         <exec dir="${basedir}" executable="/usr/bin/perl" failonerror="true">
             <arg value="${basedir}/bin/ini2template.pl" />
             <arg value="--environment" />
             <arg value="/etc/myvideo/default.ini" />
             <arg value="--template" />
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php.tt2" />
+        </exec>
+        <exec dir="${basedir}" executable="/bin/cp">
+            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php" />
+            <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
         </exec>
     </target>
 
@@ -65,6 +74,22 @@
             <arg value="--prefer-dist" />
 	    </exec>
     </target>
+
+    <target name="link-web-dir" description="linking legacy stuff into the web directory" >
+        <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true" >
+            <arg value="ezpublish/console" />
+            <arg value="assets:install" />
+            <arg value="--symlink" />
+            <arg value="web" />
+        </exec>
+        <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true" >
+            <arg value="ezpublish/console" />
+            <arg value="ezpublish:legacy:assets_install" />
+            <arg value="--symlink" />
+            <arg value="web" />
+        </exec>
+    </target>
+
 
     <target name="generate-autoloads" description="Generates the ezpublish legacy autoload.php file" >
         <exec dir="${basedir}/ezpublish_legacy" executable="/usr/bin/php" failonerror="true">
