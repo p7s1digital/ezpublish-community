@@ -16,7 +16,6 @@
         install-composer,
         install-ez-publish,
         generate-autoloads,
-        migrate-database,
         link-web-dir
     "/>
 
