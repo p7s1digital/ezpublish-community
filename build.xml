@@ -14,9 +14,10 @@
         properties-create,
         configure,
         install-composer,
-        install-ez-publish,
-        generate-autoloads,
-        link-web-dir
+        install-vendors,
+        autoloads-generate,
+        link-web-dir,
+        clear-cache
     "/>
 
     <target name="build-package" depends="
@@ -66,7 +67,7 @@
         </exec>
     </target>
 
-    <target name="install-ez-publish" description="Install ezPublish and it's extensions.">
+    <target name="install-vendors" description="Install ezPublish legacy and it's extensions.">
         <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
             <arg value="composer.phar" />
             <arg value="install" />
@@ -90,11 +91,18 @@
     </target>
 
 
-    <target name="generate-autoloads" description="Generates the ezpublish legacy autoload.php file" >
+    <target name="autoloads-generate" description="Generates the ezpublish legacy autoload.php file" >
         <exec dir="${basedir}/ezpublish_legacy" executable="/usr/bin/php" failonerror="true">
             <arg value="bin/php/ezpgenerateautoloads.php" />
             <arg value="-e" />
             <arg value="-p" />
+        </exec>
+    </target>
+
+    <target name="clear-cache" description="Clears the symfony and the EZpublish cache">
+        <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
+            <arg value="ezpublish/console" />
+            <arg value="cache:clear" />
         </exec>
     </target>
 
