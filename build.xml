@@ -17,7 +17,8 @@
         install-vendors,
         autoloads-generate,
         link-web-dir,
-        clear-cache
+        clear-cache,
+        set-filepermissions
     "/>
 
     <target name="build-package" depends="
@@ -44,17 +45,24 @@
             <arg value="--template" />
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php.tt2" />
         </exec>
+        <exec dir="${basedir}" executable="/usr/bin/perl" failonerror="true">
+            <arg value="${basedir}/bin/ini2template.pl" />
+            <arg value="--environment" />
+            <arg value="/etc/myvideo/default.ini" />
+            <arg value="--template" />
+            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/site.ini.append.php.tt2" />
+        </exec>
         <exec dir="${basedir}" executable="/bin/cp">
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php" />
             <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
         </exec>
     </target>
 
-    <target name="build-artifacts-delete" description="Deletes all build artifacts from the project">
+    <!--target name="build-artifacts-delete" description="Deletes all build artifacts from the project">
         <exec executable="rm" failonerror="true">
                 <arg line="-rf ezpublish/" />
         </exec>
-    </target>
+    </target-->
 
     <target name="properties-create" description="Create or update properties files for the project">
         <exec dir="${basedir}" executable="bin/generateBuildProperties.sh" failonerror="true" />
@@ -64,6 +72,16 @@
         <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
             <arg value="-r" />
             <arg value="eval('?>'.file_get_contents('https://getcomposer.org/installer'));" />
+        </exec>
+    </target>
+
+    <target name="set-filepermissions" description="Setting the filepermissions for the webserver group">
+        <exec dir="${basedir}" executable="/usr/chmod" failonerror="true">
+            <arg value="-R" />
+            <arg value="g+w" />
+            <arg value="web" />
+            <arg value="ezpublish" />
+            <arg value="ezpublish_legacy" />
         </exec>
     </target>
 
