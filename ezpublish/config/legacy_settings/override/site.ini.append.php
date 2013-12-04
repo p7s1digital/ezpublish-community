@@ -8,7 +8,7 @@ ActiveExtensions[]=myvideo_admin
 ActiveExtensions[]=myvideo_message
 ActiveExtensions[]=myvideo_publish
 ActiveExtensions[]=mxdcommon
-ActiveExtensions[]=ezautosave-ls
+ActiveExtensions[]=ezautosave
 
 [Session]
 SessionNameHandler=custom
