@@ -76,7 +76,7 @@
     </target>
 
     <target name="set-filepermissions" description="Setting the filepermissions for the webserver group">
-        <exec dir="${basedir}" executable="/usr/chmod" failonerror="true">
+        <exec dir="${basedir}" executable="/bin/chmod" failonerror="true">
             <arg value="-R" />
             <arg value="g+w" />
             <arg value="web" />
