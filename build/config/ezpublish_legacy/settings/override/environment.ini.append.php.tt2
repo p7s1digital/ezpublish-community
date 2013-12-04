@@ -37,16 +37,4 @@ Host=http://[% hornetq.host %]
 Port=[% hornetq.port %]
 Path=[% hornetq.path %]
 
-
-[DatabaseSettings]
-[%SET db = cms.postgresql_server.split(':') %]
-DatabaseImplementation=ezpostgresql
-Server=[% db.0 %]
-Port=[% db.1 %]
-User=[% cms.postgresql_user %]
-Password=[% cms.postgresql_pass %]
-Database=[% cms.postgresql_schema %]
-Charset=UTF8
-Socket=disabled
-
 */ ?>
