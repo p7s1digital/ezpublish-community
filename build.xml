@@ -45,6 +45,10 @@
             <arg value="--template" />
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php.tt2" />
         </exec>
+        <exec dir="${basedir}" executable="/bin/cp">
+            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php" />
+            <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
+        </exec>
         <exec dir="${basedir}" executable="/usr/bin/perl" failonerror="true">
             <arg value="${basedir}/bin/ini2template.pl" />
             <arg value="--environment" />
@@ -53,7 +57,7 @@
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/site.ini.append.php.tt2" />
         </exec>
         <exec dir="${basedir}" executable="/bin/cp">
-            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php" />
+            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/site.ini.append.php" />
             <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
         </exec>
     </target>
