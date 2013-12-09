@@ -14,12 +14,14 @@
         properties-create,
         configure,
         install-composer,
-        install-vendors,
-        autoloads-generate,
+        install-vendors
+    "/>
+
+    <target name="deploy" depends="
         link-web-dir,
-        clear-cache,
         set-filepermissions,
-        migrate-database
+        migrate-database,
+        autoloads-generate
     "/>
 
     <target name="build-package" depends="
@@ -84,6 +86,20 @@
         <exec dir="${basedir}" executable="bin/generateBuildProperties.sh" failonerror="true" />
     </target>
 
+    <target name="initialize database" description="Puts the dump into the database.">
+        <exec dir="${basedir}" executable="/usr/bin/sudo">
+            <arg value="su" />
+            <arg value="postgres" />
+            <arg value="pg_restore" />
+            <arg value="-d" />
+            <arg value="ezpublish" />
+            <arg value="-Fc" />
+            <arg value="-c" />
+            <arg value="data/" />
+            <arg value="0000-base-schema-and-data.sql" />
+        </exec>
+    </target>
+
     <target name="install-composer" description="Install the composer phar file">
         <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
             <arg value="-r" />
@@ -132,7 +148,8 @@
             <arg value="-p" />
         </exec>
         <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
-            <arg value="dump-autoloads" />
+            <arg value="composer.phar" />
+            <arg value="dump-autoload" />
         </exec>
     </target>
 
