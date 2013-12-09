@@ -18,7 +18,8 @@
         autoloads-generate,
         link-web-dir,
         clear-cache,
-        set-filepermissions
+        set-filepermissions,
+        migrate-database
     "/>
 
     <target name="build-package" depends="
@@ -56,9 +57,20 @@
             <arg value="--template" />
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/site.ini.append.php.tt2" />
         </exec>
+        <exec dir="${basedir}" executable="/usr/bin/perl" failonerror="true">
+            <arg value="${basedir}/bin/ini2template.pl" />
+            <arg value="--environment" />
+            <arg value="/etc/myvideo/default.ini" />
+            <arg value="--template" />
+            <arg value="${basedir}/build/config/ezpublish/ezpublish.yml.tt2" />
+        </exec>
         <exec dir="${basedir}" executable="/bin/cp">
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/site.ini.append.php" />
             <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
+        </exec>
+        <exec dir="${basedir}" executable="/bin/cp">
+            <arg value="${basedir}/build/config/ezpublish/ezpublish.yml" />
+            <arg value="${basedir}/ezpublish/config" />
         </exec>
     </target>
 
@@ -118,6 +130,9 @@
             <arg value="bin/php/ezpgenerateautoloads.php" />
             <arg value="-e" />
             <arg value="-p" />
+        </exec>
+        <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
+            <arg value="dump-autoloads" />
         </exec>
     </target>
 
