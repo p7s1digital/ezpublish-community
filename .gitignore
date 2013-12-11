@@ -13,6 +13,9 @@
 /ezpublish/config/legacy_settings/override/environment.ini.append.php
 /ezpublish/config/legacy_settings/override/redis.ini.append.php
 /ezpublish/config/legacy_settings/override/site.ini.append.php
+/ezpublish/config/legacy_settings/siteaccess/base
+/ezpublish/config/legacy_settings/siteaccess/mysite
+/ezpublish/config/legacy_settings/siteaccess/plain
 /web/index_treemenu.php
 /web/index_rest.php
 /web/index_cluster.php
