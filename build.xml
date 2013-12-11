@@ -141,14 +141,10 @@
 
 
     <target name="autoloads-generate" description="Generates the ezpublish legacy autoload.php file" >
-        <exec dir="${basedir}/ezpublish_legacy" executable="/usr/bin/php" failonerror="true">
-            <arg value="bin/php/ezpgenerateautoloads.php" />
-            <arg value="-e" />
-            <arg value="-p" />
-        </exec>
         <exec dir="${basedir}" executable="/usr/bin/php" failonerror="true">
             <arg value="composer.phar" />
-            <arg value="dump-autoload" />
+            <arg value="install" />
+            <arg value="--prefer-dist" />
         </exec>
     </target>
 
