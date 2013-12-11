@@ -86,17 +86,12 @@
         <exec dir="${basedir}" executable="bin/generateBuildProperties.sh" failonerror="true" />
     </target>
 
-    <target name="initialize database" description="Puts the dump into the database.">
+    <target name="initialize-database" description="Puts the dump into the database.">
         <exec dir="${basedir}" executable="/usr/bin/sudo">
-            <arg value="su" />
+	    <!-- arg value="-u postgres" /-->
+            <arg value="-u" />
             <arg value="postgres" />
-            <arg value="pg_restore" />
-            <arg value="-d" />
-            <arg value="ezpublish" />
-            <arg value="-Fc" />
-            <arg value="-c" />
-            <arg value="data/" />
-            <arg value="0000-base-schema-and-data.sql" />
+            <arg value="${basedir}/bin/initDatabase.sh" />
         </exec>
     </target>
 
