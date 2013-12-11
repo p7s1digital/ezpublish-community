@@ -97,19 +97,22 @@
     </target>
 
     <target name="set-filepermissions" description="Setting the filepermissions for the webserver group">
-        <exec dir="${basedir}" executable="/bin/chmod" failonerror="true">
+        <exec dir="${basedir}" executable="/usr/bin/sudo" failonerror="true">
+            <arg value="/bin/chmod" />
             <arg value="-R" />
             <arg value="g+w" />
             <arg value="web" />
             <arg value="ezpublish" />
             <arg value="ezpublish_legacy" />
         </exec>
-        <exec dir="${basedir}" executable="/bin/chown" failonerror="true">
+        <exec dir="${basedir}" executable="/usr/bin/sudo" failonerror="true">
+            <arg value="/bin/chown" />
             <arg value="-R" />
             <arg value="www-data" />
             <arg value="ezpublish_legacy/var/ezflow_site" />
         </exec>
-        <exec dir="${basedir}" executable="/bin/chown" failonerror="true">
+        <exec dir="${basedir}" executable="/usr/bin/sudo" failonerror="true">
+            <arg value="/bin/chown" />
             <arg value="-R" />
             <arg value="www-data" />
             <arg value="ezpublish_legacy/var/cache" />
