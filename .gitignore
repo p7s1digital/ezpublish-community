@@ -4,10 +4,15 @@
 /.idea/
 /bin/behat
 /bin/phpunit
+/build.properties
 /ezpublish/cache/
 /ezpublish/logs/
 /ezpublish_legacy
+/ezpublish/config/ezpublish.yml
 /ezpublish/config/parameters.yml
+/ezpublish/config/legacy_settings/override/environment.ini.append.php
+/ezpublish/config/legacy_settings/override/redis.ini.append.php
+/ezpublish/config/legacy_settings/override/site.ini.append.php
 /web/index_treemenu.php
 /web/index_rest.php
 /web/index_cluster.php
@@ -18,7 +23,6 @@
 /web/var
 /web/.htaccess
 composer.phar
-composer.lock
 /ezpublish/SymfonyRequirements.php
 /ezpublish/bootstrap.php.cache
 /ezpublish/check.php
