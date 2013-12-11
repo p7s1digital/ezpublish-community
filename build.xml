@@ -37,7 +37,7 @@
             <arg value="--template" />
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/redis.ini.append.php.tt2" />
         </exec>
-        <exec dir="${basedir}" executable="/bin/cp">
+        <exec dir="${basedir}" executable="/bin/mv">
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/redis.ini.append.php" />
             <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
         </exec>
