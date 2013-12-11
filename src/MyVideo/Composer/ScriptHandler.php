@@ -54,15 +54,14 @@ class ScriptHandler extends DistributionBundleScriptHandler
      */
     public static function createCacheDirectories(CommandEvent $event)
     {
-        $baseDir = getcwd();
-        $legacyVoid = $baseDir . 'ezpublish_legacy';
-
-        $cacheDir = $legacyVoid.'var/cache';
-        $ezflowDir = $legacyVoid.'var/ezflow_site/';
+        $legacyVoid = getcwd() . '/ezpublish_legacy';
+        $cacheDir = $legacyVoid . '/var/cache';
+        $ezflowDir = $legacyVoid . '/var/ezflow_site/';
 
         if (false === file_exists($cacheDir)) {
             mkdir($cacheDir);
         }
+
         if (false === file_exists($ezflowDir)) {
             mkdir($ezflowDir);
         }
