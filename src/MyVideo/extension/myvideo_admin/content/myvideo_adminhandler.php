@@ -172,9 +172,13 @@ class MyVideo_AdminHandler extends eZContentObjectEditHandler
         $contentObject['ga_tvbrand'] = $http->postVariable('ga_tvbrand');
         $contentObject['ga_channel'] = $http->postVariable('ga_channel');
         $contentObject['custom_pixels'] = $http->postVariable('custom_pixels');
+        $contentObject['ivw_two_category'] = $http->postVariable('ivw_two_category');
+        $contentObject['ivw_two_channel'] = $http->postVariable('ivw_two_channel');
+        $contentObject['ivw_two_format'] = $http->postVariable('ivw_two_format');
 
         $tracking = new myvideoTracking($contentObject);
         $tracking->store();
+
         unset($contentObject);
 
         $contentObject = array('contentobject_id' => $object->ID);

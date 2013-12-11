@@ -20,16 +20,18 @@ class MyVideoRenderMyVideoNiceUrl extends MyVideoRendererBase implements MyVideo
         $data = array();
         $data['type'] = 'niceUrl';
         $data['niceUrls'] = array();
+        $this->copyFieldContent('is_ugc_backend', $data, true);
+        $url = $this->getAttributeValue('redirect_url');
+        $url = $url['url'];
+        $data['url'] = $url;
         $urlList = $this->getAttributeValue('nice_urls');
-        $this->copyFieldContent('redirect_url', $data);
-        $targetUrl = $data['redirectUrl']['url'];
         foreach ($urlList as $niceUrl) {
             if (strlen($niceUrl['col_0']) > 0) {
-                $data['niceUrls'] [] = $niceUrl['col_0'];
-                $this->addRedirectsToRedis($niceUrl['col_0'], $targetUrl);
+                $data['niceUrls'][] = $niceUrl['col_0'];
             }
         }
-        return array('url' => $targetUrl);
+        $this->addRedirectsToRedis($data);
+        return $data;
     }
 
     /**
@@ -114,16 +116,22 @@ class MyVideoRenderMyVideoNiceUrl extends MyVideoRendererBase implements MyVideo
     /**
      * Writes a single redis key for an alias entry
      *
-     * @param $aliasUrl string The alias url for the redirect
-     * @param $targetUrl string The url to redirect to
+     * @param $data array The alias data url for the redirect
      */
-    private function addRedirectsToRedis($aliasUrl, $targetUrl)
+    private function addRedirectsToRedis($data)
     {
         $redis = new MyVideoStorageRedis();
-        $redisKey = $this->buildKey($aliasUrl);
-        $redis->setKey($redisKey);
-        $value = json_encode(array('url' => $targetUrl));
-        $redis->store($value);
+
+        foreach ($data['niceUrls'] as $aliasUrl) {
+            $redisKey = $this->buildKey($aliasUrl);
+            $redis->setKey($redisKey);
+            $value = json_encode(array(
+                'url' => $data['url'],
+                'type' => 'niceUrl',
+                'isUgcBackend' => $data['isUgcBackend'],
+            ));
+            $redis->store($value);
+        }
     }
 
     /**

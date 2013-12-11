@@ -58,6 +58,24 @@ class myvideoTracking extends eZPersistentObject
                     'default' => null,
                     'required' => false
                 ),
+                'ivw_two_category' => array(
+                    'name' => 'ivw_two_category',
+                    'datatype' => 'string',
+                    'default' => null,
+                    'required' => true
+                ),
+                'ivw_two_channel' => array(
+                    'name' => 'ivw_two_channel',
+                    'datatype' => 'string',
+                    'default' => null,
+                    'required' => true
+                ),
+                'ivw_two_format' => array(
+                    'name' => 'ivw_two_format',
+                    'datatype' => 'string',
+                    'default' => null,
+                    'required' => true
+                ),
                 'custom_pixels' => array(
                     'name' => 'custom_pixels',
                     'datatype' => 'string',

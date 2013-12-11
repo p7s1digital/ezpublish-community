@@ -9,6 +9,10 @@ Buttons[]
 
 Buttons[style]=bold,italic,underline
 Buttons[]=|
+Buttons[lists]=bullist,numlist
+Buttons[]=|
+Buttons[table]=table
+Buttons[]=|
 Buttons[undo]=undo,redo
 Buttons[]=|
 Buttons[link]=link,unlink

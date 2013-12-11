@@ -15,6 +15,7 @@
 ClearRelationAttributeReverse[]=myvideo_videolist
 
 [myvideo_image_teaser]
+ClearRelationAttributeReverse[]=myvideo_player_page
 ClearRelationAttributeReverse[]=myvideo_videolist
 
 [myvideo_text_teaser]
@@ -22,10 +23,12 @@ ClearRelationAttributeReverse[]=myvideo_videolist
 
 [myvideo_socialmedia_comments]
 ClearRelationAttributeReverse[]=myvideo_format_page
+ClearRelationAttributeReverse[]=myvideo_player_page
 ClearRelationAttributeReverse[]=myvideo_sub_homepage
 
 [myvideo_videolist]
 ClearRelated[]
+ClearRelationAttributeReverse[]=myvideo_player_page
 ClearRelationAttributeReverse[]=myvideo_homepage
 ClearRelationAttributeReverse[]=myvideo_sub_homepage
 ClearRelationAttributeReverse[]=myvideo_sushibar
@@ -33,6 +36,7 @@ ClearRelationAttributeReverse[]=myvideo_format_page
 
 [myvideo_sushibar]
 ClearRelated[]
+ClearRelationAttributeReverse[]=myvideo_player_page
 ClearRelationAttributeReverse[]=myvideo_homepage
 ClearRelationAttributeReverse[]=myvideo_sub_homepage
 ClearRelationAttributeReverse[]=myvideo_tab_module
@@ -41,6 +45,7 @@ ClearRelationAttributeReverse[]=myvideo_contest_page
 
 [myvideo_tab_module]
 ClearRelated[]
+ClearRelationAttributeReverse[]=myvideo_player_page
 ClearRelationAttributeReverse[]=myvideo_sub_homepage
 ClearRelationAttributeReverse[]=myvideo_homepage
 ClearRelationAttributeReverse[]=myvideo_format_page

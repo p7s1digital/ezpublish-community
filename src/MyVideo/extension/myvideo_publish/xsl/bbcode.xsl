@@ -3,16 +3,16 @@
                 xmlns:php="http://php.net/xsl"
                 version="1.0">
 
-    <xsl:output method="text" indent="no" encoding="UTF-8" omit-xml-declaration="yes"
-            />
+    <xsl:output method="text" indent="no" encoding="UTF-8" omit-xml-declaration="yes" />
     <xsl:preserve-space elements="paragraph"/>
     <xsl:template match="/">
         <xsl:apply-templates/>
     </xsl:template>
 
     <xsl:template match="paragraph">
+        <xsl:text>[div class="bbcode--paragraph"]</xsl:text>
         <xsl:apply-templates/>
-        <xsl:text>&#xa;&#xa;</xsl:text>
+        <xsl:text>[/div]</xsl:text>
     </xsl:template>
 
     <xsl:template match="line">
@@ -21,19 +21,19 @@
     </xsl:template>
 
     <xsl:template match="table">
-        <xsl:text>[table]</xsl:text>
+        <xsl:text>[table class="bbcode--table"]</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>[/table]</xsl:text>
     </xsl:template>
 
     <xsl:template match="tr">
-        <xsl:text>[tr]</xsl:text>
+        <xsl:text>[tr class="bbcode--table-row"]</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>[/tr]</xsl:text>
     </xsl:template>
 
     <xsl:template match="td">
-        <xsl:text>[td]</xsl:text>
+        <xsl:text>[td class="bbcode--table-cell"]</xsl:text>
         <xsl:apply-templates/>
         <xsl:text>[/td]</xsl:text>
     </xsl:template>
@@ -44,9 +44,16 @@
         <xsl:text>[/list]</xsl:text>
     </xsl:template>
 
-    <xsl:template match="li">
-        <xsl:text>[*]</xsl:text>
+    <xsl:template match="ol">
+        <xsl:text>[olist]</xsl:text>
         <xsl:apply-templates/>
+        <xsl:text>[/olist]</xsl:text>
+    </xsl:template>
+
+    <xsl:template match="li">
+        <xsl:text>[li]</xsl:text>
+        <xsl:apply-templates/>
+        <xsl:text>[/li]</xsl:text>
     </xsl:template>
 
     <xsl:template match="link">

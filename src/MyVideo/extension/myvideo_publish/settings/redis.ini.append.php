@@ -23,5 +23,7 @@ ClassList[]=myvideo_contest_page
 ClassList[]=myvideo_format_page
 ClassList[]=myvideo_sub_homepage
 ClassList[]=myvideo_sushibar
+ClassList[]=myvideo_player_page
+ClassList[]=myvideo_staticpage
 
 */
