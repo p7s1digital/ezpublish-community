@@ -37,20 +37,12 @@
             <arg value="--template" />
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/redis.ini.append.php.tt2" />
         </exec>
-        <exec dir="${basedir}" executable="/bin/mv">
-            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/redis.ini.append.php" />
-            <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
-        </exec>
         <exec dir="${basedir}" executable="/usr/bin/perl" failonerror="true">
             <arg value="${basedir}/bin/ini2template.pl" />
             <arg value="--environment" />
             <arg value="/etc/myvideo/default.ini" />
             <arg value="--template" />
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php.tt2" />
-        </exec>
-        <exec dir="${basedir}" executable="/bin/mv">
-            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php" />
-            <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
         </exec>
         <exec dir="${basedir}" executable="/usr/bin/perl" failonerror="true">
             <arg value="${basedir}/bin/ini2template.pl" />
@@ -67,6 +59,14 @@
             <arg value="${basedir}/build/config/ezpublish/ezpublish.yml.tt2" />
         </exec>
         <exec dir="${basedir}" executable="/bin/mv">
+            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/environment.ini.append.php" />
+            <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
+        </exec>
+        <exec dir="${basedir}" executable="/bin/mv">
+            <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/redis.ini.append.php" />
+            <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
+        </exec>
+        <exec dir="${basedir}" executable="/bin/mv">
             <arg value="${basedir}/build/config/ezpublish_legacy/settings/override/site.ini.append.php" />
             <arg value="${basedir}/ezpublish/config/legacy_settings/override" />
         </exec>
@@ -76,11 +76,6 @@
         </exec>
     </target>
 
-    <!--target name="build-artifacts-delete" description="Deletes all build artifacts from the project">
-        <exec executable="rm" failonerror="true">
-                <arg line="-rf ezpublish/" />
-        </exec>
-    </target-->
 
     <target name="properties-create" description="Create or update properties files for the project">
         <exec dir="${basedir}" executable="bin/generateBuildProperties.sh" failonerror="true" />
@@ -88,7 +83,6 @@
 
     <target name="initialize-database" description="Puts the dump into the database.">
         <exec dir="${basedir}" executable="/usr/bin/sudo">
-	    <!-- arg value="-u postgres" /-->
             <arg value="-u" />
             <arg value="postgres" />
             <arg value="${basedir}/bin/initDatabase.sh" />
@@ -109,11 +103,6 @@
             <arg value="web" />
             <arg value="ezpublish" />
             <arg value="ezpublish_legacy" />
-        </exec>
-        <exec dir="${basedir}" executable="/bin/chown" failonerror="true">
-            <arg value="-R" />
-            <arg value="www-data" />
-            <arg value="ezpublish_legacy/var/ezflow_site/cache" />
         </exec>
     </target>
 
