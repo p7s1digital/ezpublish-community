@@ -73,7 +73,8 @@
             "eZ\\Bundle\\EzPublishLegacyBundle\\Composer\\ScriptHandler::installAssets",
             "eZ\\Bundle\\EzPublishCoreBundle\\Composer\\ScriptHandler::dumpAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "MyVideo\\Composer\\ScriptHandler::generateSymLinks"
+            "MyVideo\\Composer\\ScriptHandler::generateSymLinks",
+            "MyVideo\\Composer\\ScriptHandler::createCacheDirectories"
         ],
         "post-update-cmd": [
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap",
