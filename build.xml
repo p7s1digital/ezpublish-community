@@ -104,6 +104,16 @@
             <arg value="ezpublish" />
             <arg value="ezpublish_legacy" />
         </exec>
+        <exec dir="${basedir}" executable="/bin/chown" failonerror="true">
+            <arg value="-R" />
+            <arg value="www-data" />
+            <arg value="ezpublish_legacy/var/ezflow_site" />
+        </exec>
+        <exec dir="${basedir}" executable="/bin/chown" failonerror="true">
+            <arg value="-R" />
+            <arg value="www-data" />
+            <arg value="ezpublish_legacy/var/cache" />
+        </exec>
     </target>
 
     <target name="install-vendors" description="Install ezPublish legacy and it's extensions.">
