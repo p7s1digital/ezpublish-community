@@ -48,4 +48,24 @@ class ScriptHandler extends DistributionBundleScriptHandler
         }
     }
 
+    /**
+     * Creates some needed caching directories for the legacy to avoid problems with their ownership and permissions.
+     * @param CommandEvent $event
+     */
+    public static function createCacheDirectories(CommandEvent $event)
+    {
+        $baseDir = getcwd();
+        $legacyVoid = $baseDir . 'ezpublish_legacy';
+
+        $cacheDir = $legacyVoid.'var/cache';
+        $ezflowDir = $legacyVoid.'var/ezflow_site/';
+
+        if (false === file_exists($cacheDir)) {
+            mkdir($cacheDir);
+        }
+        if (false === file_exists($ezflowDir)) {
+            mkdir($ezflowDir);
+        }
+    }
+
 } 
