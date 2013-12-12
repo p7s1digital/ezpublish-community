@@ -19,9 +19,9 @@
 
     <target name="deploy" depends="
         link-web-dir,
-        set-filepermissions,
+        autoloads-generate,
         migrate-database,
-        autoloads-generate
+        set-filepermissions
     "/>
 
     <target name="build-package" depends="
