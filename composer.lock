@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "ce53d7c6911caa5c8fe7af6706d6c34e",
+    "hash": "a0bb10e04aeb20c8faf2715c339b2351",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -498,12 +498,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/DemoBundle.git",
-                "reference": "66c24c1314811614bcf6be2359b5e37043fb5973"
+                "reference": "2be593ca7317c21e8a21ce271f27791c47ed6e73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/66c24c1314811614bcf6be2359b5e37043fb5973",
-                "reference": "66c24c1314811614bcf6be2359b5e37043fb5973",
+                "url": "https://api.github.com/repos/ezsystems/DemoBundle/zipball/2be593ca7317c21e8a21ce271f27791c47ed6e73",
+                "reference": "2be593ca7317c21e8a21ce271f27791c47ed6e73",
                 "shasum": ""
             },
             "require": {
@@ -528,7 +528,7 @@
                 }
             ],
             "description": "Demo bundle for eZ Publish Platform",
-            "time": "2013-12-09 11:10:16"
+            "time": "2013-12-16 09:12:59"
         },
         {
             "name": "ezsystems/ezautosave-ls",
@@ -1499,17 +1499,17 @@
         },
         {
             "name": "symfony/symfony",
-            "version": "v2.3.7",
+            "version": "v2.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "2829b471871c2564228fe9f0832a0f928a8ffaa1"
+                "reference": "b0b421908d569e5024372ded65857707c409e0f7"
             },
             "dist": {
                 "type": "tar",
-                "url": "http://satis.dcp-tools-01.magic-technik.de/dist/symfony-symfony-2829b471871c2564228fe9f0832a0f928a8ffaa1-zip-bab502.tar",
-                "reference": "v2.3.7",
-                "shasum": "1639698d7bb59203e11c1f22af9c4a4d19a4c979"
+                "url": "http://satis.dcp-tools-01.magic-technik.de/dist/symfony-symfony-b0b421908d569e5024372ded65857707c409e0f7-zip-328e02.tar",
+                "reference": "v2.3.8",
+                "shasum": "afc405f97f232ee5165cd24aa664709607021e1e"
             },
             "require": {
                 "doctrine/common": "~2.2",
@@ -1603,7 +1603,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2013-11-14 07:58:51"
+            "time": "2013-12-16 14:36:05"
         },
         {
             "name": "tedivm/stash",
@@ -1800,23 +1800,28 @@
         },
         {
             "name": "white-october/pagerfanta-bundle",
-            "version": "v1.0.0",
+            "version": "v1.0.1",
             "target-dir": "WhiteOctober/PagerfantaBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
-                "reference": "6bea6f3a23ea4b69d821b00c89a3746e437b8880"
+                "reference": "0e56c1efe353be3142c90acc9aa019233b735947"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/6bea6f3a23ea4b69d821b00c89a3746e437b8880",
-                "reference": "6bea6f3a23ea4b69d821b00c89a3746e437b8880",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/0e56c1efe353be3142c90acc9aa019233b735947",
+                "reference": "0e56c1efe353be3142c90acc9aa019233b735947",
                 "shasum": ""
             },
             "require": {
                 "pagerfanta/pagerfanta": "1.0.*",
-                "symfony/framework-bundle": "~2.1",
-                "symfony/property-access": "~2.2"
+                "symfony/framework-bundle": "~2.2",
+                "symfony/property-access": "~2.2",
+                "symfony/twig-bundle": "~2.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~3.7",
+                "symfony/symfony": "~2.2"
             },
             "type": "symfony-bundle",
             "extra": {
@@ -1845,7 +1850,7 @@
                 "page",
                 "paging"
             ],
-            "time": "2013-06-06 08:08:38"
+            "time": "2013-12-09 21:54:42"
         },
         {
             "name": "zetacomponents/archive",
@@ -3698,12 +3703,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/SahiClient.git",
-                "reference": "815c43d542f5d56c8ee7e26736431eaddf3dfcf0"
+                "reference": "246969c122286189b2c4be360df63c5f624e6972"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/SahiClient/zipball/815c43d542f5d56c8ee7e26736431eaddf3dfcf0",
-                "reference": "815c43d542f5d56c8ee7e26736431eaddf3dfcf0",
+                "url": "https://api.github.com/repos/Behat/SahiClient/zipball/246969c122286189b2c4be360df63c5f624e6972",
+                "reference": "246969c122286189b2c4be360df63c5f624e6972",
                 "shasum": ""
             },
             "require": {
@@ -3739,7 +3744,7 @@
                 "browser",
                 "testing"
             ],
-            "time": "2013-11-25 11:03:34"
+            "time": "2013-12-16 14:33:31"
         },
         {
             "name": "behat/symfony2-extension",
