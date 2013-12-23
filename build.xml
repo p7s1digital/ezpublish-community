@@ -21,6 +21,7 @@
         link-web-dir,
         autoloads-generate,
         migrate-database,
+        clear-cache,
         set-filepermissions
     "/>
 
