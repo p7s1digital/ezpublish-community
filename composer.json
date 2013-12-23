@@ -30,7 +30,7 @@
         "tedivm/stash-bundle": "0.2.*",
         "ezsystems/demobundle": "@dev",
         "ezsystems/ezpublish-kernel": "v2013.11.0",
-        "ezsystems/ezpublish-legacy": "dev",
+        "ezsystems/ezpublish-legacy": "@dev",
         "ezsystems/comments-bundle": "@dev",
         "ezsystems/ezpublish-legacy-installer": "*",
         "ezsystems/ezautosave-ls" : "@dev",

@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "a0bb10e04aeb20c8faf2715c339b2351",
+    "hash": "ed65ffaeecf0a4bf878f32d1d73d5ea0",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -654,16 +654,16 @@
         },
         {
             "name": "ezsystems/ezpublish-legacy",
-            "version": "v2013.11",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezsystems/ezpublish-legacy.git",
-                "reference": "87f17ded1d1e618e2152d1448f760b3228cdcb5f"
+                "reference": "d327eb3db6c478b4c21679edb8494bf90a034869"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezsystems/ezpublish-legacy/zipball/87f17ded1d1e618e2152d1448f760b3228cdcb5f",
-                "reference": "87f17ded1d1e618e2152d1448f760b3228cdcb5f",
+                "url": "https://api.github.com/repos/ezsystems/ezpublish-legacy/zipball/d327eb3db6c478b4c21679edb8494bf90a034869",
+                "reference": "d327eb3db6c478b4c21679edb8494bf90a034869",
                 "shasum": ""
             },
             "require": {
@@ -717,7 +717,7 @@
             ],
             "description": "eZ Publish LegacyStack (4.x)",
             "homepage": "http://share.ez.no",
-            "time": "2013-11-27 06:33:38"
+            "time": "2013-12-20 14:46:49"
         },
         {
             "name": "ezsystems/ezpublish-legacy-installer",
@@ -4435,6 +4435,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "ezsystems/demobundle": 20,
+        "ezsystems/ezpublish-legacy": 20,
         "ezsystems/comments-bundle": 20,
         "ezsystems/ezautosave-ls": 20,
         "zetacomponents/archive": 20,
