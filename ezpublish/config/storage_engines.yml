@@ -1,5 +1,5 @@
 parameters:
-    ezpublish.fieldType.ezmatrix.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Matrix
+    ezpublish.fieldType.ezmatrix.converter.class: MyVideo\Converter\Matrix
 
 services:
     ezpublish.fieldType.myvideomenuurl.converter:
