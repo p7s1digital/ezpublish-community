@@ -12,5 +12,6 @@ AvailableClasses[]=myvideo_search
 AvailableClasses[]=myvideo_contest_page
 AvailableClasses[]=myvideo_format_page
 AvailableClasses[]=myvideo_player_page
+AvailableClasses[]=myvideo_highlight_page
 
 */

@@ -1,3 +1,6 @@
+parameters:
+    ezpublish.fieldType.ezmatrix.converter.class: eZ\Publish\Core\Persistence\Legacy\Content\FieldValue\Converter\Matrix
+
 services:
     ezpublish.fieldType.myvideomenuurl.converter:
         class: %ezpublish.fieldType.ezstring.converter.class%
@@ -13,3 +16,8 @@ services:
         class: %ezpublish.fieldType.ezinteger.converter.class%
         tags:
             - {name: ezpublish.storageEngine.legacy.converter, alias: myvideosocialwidget, lazy: true, callback: '::create'}
+
+    ezpublish.fieldType.ezmatrix.converter:
+        class: %ezpublish.fieldType.ezmatrix.converter.class%
+        tags:
+            - {name: ezpublish.storageEngine.legacy.converter, alias: ezmatrix, lazy: true, callback: '::create'}

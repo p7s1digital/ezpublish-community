@@ -2,6 +2,7 @@ parameters:
     ezpublish.fieldType.myvideomenuurl.class: %ezpublish.fieldType.ezstring.class%
     ezpublish.fieldType.myvideoicondropdown.class: %ezpublish.fieldType.ezinteger.class%
     ezpublish.fieldType.myvideosocialwidget.class: %ezpublish.fieldType.ezinteger.class%
+    ezpublish.fieldType.ezmatrix.class: eZ\Publish\Core\FieldType\Matrix\Type
 
 services:
     ezpublish.fieldType.myvideomenuurl:
@@ -24,3 +25,9 @@ services:
         arguments: [ "myvideosocialwidget" ]
         tags:
             - {name: ezpublish.fieldType, alias: myvideosocialwidget}
+
+    ezpublish.fieldType.ezmatrix:
+        class: %ezpublish.fieldType.ezmatrix.class%
+        parent: ezpublish.fieldType
+        tags:
+            - {name: ezpublish.fieldType, alias: ezmatrix}

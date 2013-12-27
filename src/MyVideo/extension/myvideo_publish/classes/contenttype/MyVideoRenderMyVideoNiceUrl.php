@@ -25,9 +25,10 @@ class MyVideoRenderMyVideoNiceUrl extends MyVideoRendererBase implements MyVideo
         $url = $url['url'];
         $data['url'] = $url;
         $urlList = $this->getAttributeValue('nice_urls');
+        $urlList = $this->getAliasUrls($urlList);
         foreach ($urlList as $niceUrl) {
-            if (strlen($niceUrl['col_0']) > 0) {
-                $data['niceUrls'][] = $niceUrl['col_0'];
+            if (strlen($niceUrl) > 0) {
+                $data['niceUrls'][] = $niceUrl;
             }
         }
         $this->addRedirectsToRedis($data);
@@ -50,9 +51,9 @@ class MyVideoRenderMyVideoNiceUrl extends MyVideoRendererBase implements MyVideo
         // we have to remove some keys from redis
         $redis = new MyVideoStorageRedis();
         $attributeList = $this->getAttributeValue('nice_urls');
-        $urlList = $this->retrieveUrls($attributeList);
+        $urlList = $this->getAliasUrls($attributeList);
         $previousValues = $lastVersion['nice_urls'];
-        $previousUrlList = $this->retrieveUrls($previousValues);
+        $previousUrlList = $this->getAliasUrls($previousValues);
 
         foreach ($previousUrlList as $urlToCheck) {
             if (false === in_array($urlToCheck, $urlList)) {
@@ -68,7 +69,7 @@ class MyVideoRenderMyVideoNiceUrl extends MyVideoRendererBase implements MyVideo
     public function handleDelete($node)
     {
         $attributeList = $this->getAttributeValue('nice_urls');
-        $urlList = $this->retrieveUrls($attributeList);
+        $urlList = $this->getAliasUrls($attributeList);
         $redis = new MyVideoStorageRedis();
         foreach ($urlList as $urlToCheck) {
             $redisKey = $this->buildKey($urlToCheck);
@@ -91,9 +92,9 @@ class MyVideoRenderMyVideoNiceUrl extends MyVideoRendererBase implements MyVideo
         // we have to remove some keys from redis
         $redis = new MyVideoStorageRedis();
         $attributeList = $this->getAttributeValue('nice_urls');
-        $urlList = $this->retrieveUrls($attributeList);
+        $urlList = $this->getAliasUrls($attributeList);
         $previousValues = $lastVersion['nice_urls'];
-        $previousUrlList = $this->retrieveUrls($previousValues);
+        $previousUrlList = $this->getAliasUrls($previousValues);
 
         foreach ($previousUrlList as $urlToCheck) {
             if (false === in_array($urlToCheck, $urlList)) {
@@ -142,9 +143,11 @@ class MyVideoRenderMyVideoNiceUrl extends MyVideoRendererBase implements MyVideo
      */
     protected function buildKey($aliasUrl = null)
     {
+        // first alias will always be written implicitly by base-renderer!
         if (is_null($aliasUrl)) {
             $aliases = $this->getAttributeValue('nice_urls');
             $aliasUrl = $aliases[0]['col_0'];
+            $aliasUrl = $this->normalizeAlias($aliasUrl);
         }
         $keyParts = array();
         $keyParts [] = self::KEY_PART_TYPE;
@@ -157,11 +160,16 @@ class MyVideoRenderMyVideoNiceUrl extends MyVideoRendererBase implements MyVideo
         return implode(self::KEY_DELIMITER, $keyParts);
     }
 
-    private function retrieveUrls(array &$attributeList)
+    public function normalizeAlias($alias)
+    {
+        return mb_strtolower($alias, 'UTF-8');
+    }
+
+    private function getAliasUrls(array &$attributeList)
     {
         $urlList = array();
         foreach ($attributeList as $attribute) {
-            $urlList [] = $attribute['col_0'];
+            $urlList [] = $this->normalizeAlias($attribute['col_0']);
         }
         return $urlList;
     }

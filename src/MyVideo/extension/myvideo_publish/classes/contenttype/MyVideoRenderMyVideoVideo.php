@@ -23,6 +23,8 @@ class MyVideoRenderMyVideoVideo extends MyVideoRendererBase implements MyVideoRe
         $this->copyFieldContent('banderole', $data);
         $this->copyFieldContent('is_ad', $data);
         $this->copyFieldContent('cover', $data, false, array('cover'));
+        $this->copyFieldContent('hide_title', $data);
+        $this->copyFieldContent('hide_playbutton', $data);
         $data['icon'] = MyVideoIcon::generateIconString($standard);
 
         if (isset($standard['fields']['tracking_click_pixel_urls'])) {

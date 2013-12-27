@@ -12,13 +12,16 @@
 # ClearParents[]
 
 [myvideo_video]
+ClearRelationAttributeReverse[]=myvideo_highlight_page
 ClearRelationAttributeReverse[]=myvideo_videolist
 
 [myvideo_image_teaser]
+ClearRelationAttributeReverse[]=myvideo_highlight_page
 ClearRelationAttributeReverse[]=myvideo_player_page
 ClearRelationAttributeReverse[]=myvideo_videolist
 
 [myvideo_text_teaser]
+ClearRelationAttributeReverse[]=myvideo_highlight_page
 ClearRelationAttributeReverse[]=myvideo_videolist
 
 [myvideo_socialmedia_comments]
@@ -36,6 +39,7 @@ ClearRelationAttributeReverse[]=myvideo_format_page
 
 [myvideo_sushibar]
 ClearRelated[]
+ClearRelationAttributeReverse[]=myvideo_highlight_page
 ClearRelationAttributeReverse[]=myvideo_player_page
 ClearRelationAttributeReverse[]=myvideo_homepage
 ClearRelationAttributeReverse[]=myvideo_sub_homepage
