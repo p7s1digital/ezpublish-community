@@ -25,6 +25,7 @@ class ScriptHandler extends DistributionBundleScriptHandler
         $extensionList = array('mxdcommon', 'myvideo_admin', 'myvideo_message', 'myvideo_publish');
         foreach ($extensionList as $extension) {
             if (false === file_exists($legacyVoid . '/extension/' . $extension)) {
+                print "setup link for " . $extension;
                 symlink($baseDir . '/src/MyVideo/extension/' . $extension, $legacyVoid . '/extension/' . $extension);
             }
         }
@@ -32,10 +33,12 @@ class ScriptHandler extends DistributionBundleScriptHandler
         $siteaccess = $legacyVoid . '/settings/siteaccess';
         // linking the settings into the legacy void
         if (false === file_exists($siteaccess)) {
+            print "setup link for siteaccess";
             symlink($baseDir . '/ezpublish/config/legacy_settings/siteaccess', $siteaccess);
         } else {
             // if the original directory is given, we delete it and link our own settings here
             if (true === is_dir($siteaccess)) {
+                print "delete and link siteaccess";
                 exec('rm -rf ' . $siteaccess);
                 symlink(
                     $baseDir . '/ezpublish/config/legacy_settings/siteaccess',
