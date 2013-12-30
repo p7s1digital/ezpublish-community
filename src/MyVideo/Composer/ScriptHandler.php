@@ -36,7 +36,9 @@ class ScriptHandler extends DistributionBundleScriptHandler
         } else {
             // if the original directory is given, we delete it and link our own settings here
             if (true === is_dir($siteaccess)) {
-                exec('rm -rf ' . $siteaccess);
+                // as we use the unix rm command, we need to quote the path
+                $toBeDeleted = str_replace(" ", "\\ ", $siteaccess);
+                exec('rm -rf ' . $toBeDeleted);
                 symlink(
                     $baseDir . '/ezpublish/config/legacy_settings/siteaccess',
                     $siteaccess
