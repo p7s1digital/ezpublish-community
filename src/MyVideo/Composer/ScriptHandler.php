@@ -19,10 +19,6 @@ class ScriptHandler extends DistributionBundleScriptHandler
     public static function generateSymLinks(CommandEvent $event)
     {
         $baseDir = getcwd();
-        print "THE BASE IS : ".$baseDir . "\n";
-        $check = is_dir($baseDir);
-        print $check ? "IT'S THERE" : "NOPE";
-        print "\n";
         $legacyVoid = $baseDir . '/ezpublish_legacy';
 
         // linking the extensions into the legacy void
@@ -40,9 +36,10 @@ class ScriptHandler extends DistributionBundleScriptHandler
         } else {
             // if the original directory is given, we delete it and link our own settings here
             if (true === is_dir($siteaccess)) {
-                print "TRY TO DELETE " . $siteaccess . "\n";
-                exec('rm -rf ' . $siteaccess);
-                print "LINKING ". $baseDir . '/ezpublish/config/legacy_settings/siteaccess\n';
+                $toBeDeleted = str_replace(" ", "\\ ", $siteaccess);
+                print "DELETING ".$toBeDeleted . "\n";
+                $res = exec('rm -rf ' . $toBeDeleted);
+                print "EXEC SAYS " . $res . "\n";
                 symlink(
                     $baseDir . '/ezpublish/config/legacy_settings/siteaccess',
                     $siteaccess
