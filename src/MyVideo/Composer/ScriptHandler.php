@@ -19,6 +19,7 @@ class ScriptHandler extends DistributionBundleScriptHandler
     public static function generateSymLinks(CommandEvent $event)
     {
         $baseDir = str_replace(" ", "\\ ", getcwd());
+        print "THE BASE IS : ".$baseDir;
         $legacyVoid = $baseDir . '/ezpublish_legacy';
 
         // linking the extensions into the legacy void
