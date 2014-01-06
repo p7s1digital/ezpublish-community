@@ -2,7 +2,7 @@ parameters:
     ezpublish.fieldType.myvideomenuurl.class: %ezpublish.fieldType.ezstring.class%
     ezpublish.fieldType.myvideoicondropdown.class: %ezpublish.fieldType.ezinteger.class%
     ezpublish.fieldType.myvideosocialwidget.class: %ezpublish.fieldType.ezinteger.class%
-    ezpublish.fieldType.ezmatrix.class: MyVideo\Converter\Matrix\Type
+    ezpublish.fieldType.ezmatrix.class: MyVideo\FieldType\Matrix\Type
 
 services:
     ezpublish.fieldType.myvideomenuurl:
