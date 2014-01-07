@@ -5,5 +5,6 @@ ExtensionRepositories[]=myvideo_admin
 ModuleList[]=appendix
 ModuleList[]=utilities
 ModuleList[]=voting
+ModuleList[]=massupload
 
 */

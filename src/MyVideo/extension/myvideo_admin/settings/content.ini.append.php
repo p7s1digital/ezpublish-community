@@ -1,3 +1,4 @@
+
 <?php /* #?ini charset="utf-8"?
 
 [DataTypeSettings]
@@ -5,6 +6,7 @@ ExtensionDirectories[]=myvideo_admin
 AvailableDataTypes[]=myvideomenuurl
 AvailableDataTypes[]=myvideosocialwidget
 AvailableDataTypes[]=myvideoicondropdown
+AvailableDataTypes[]=myvideobulkuploader
 
 [EditSettings]
 ExtensionDirectories[]=myvideo_admin

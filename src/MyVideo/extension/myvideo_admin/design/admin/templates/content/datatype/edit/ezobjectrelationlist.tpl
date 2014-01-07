@@ -349,8 +349,8 @@ HINT
 
     {* Simple interface. *}
     {else}
-
-        <h4>{'Objects in the relation'|i18n( 'design/standard/content/datatype' )}</h4>
+        <span id="ajaxTarget">
+        <h4>{'Objects in the relation'|i18n( 'design/standard/content/datatype' )} {count($attribute.content.relation_list)} </h4>
         <table class="list{if $attribute.content.relation_list|not} hide-not{/if}" cellspacing="0">
         <thead>
         <tr>
@@ -411,7 +411,7 @@ HINT
         {if $attribute.content.relation_list|not}
             <p class="ezobject-relation-no-relation">{'There are no related objects.'|i18n( 'design/standard/content/datatype' )}</p>
         {/if}
-
+        </span>
         <div class="block inline-block">
             {if $attribute.content.relation_list}
                 <input class="button ezobject-relation-remove-button" type="submit" name="CustomActionButton[{$attribute.id}_remove_objects]" value="{'Remove selected'|i18n( 'design/standard/content/datatype' )}" title="{'Remove selected elements from the relation'|i18n( 'design/standard/content/datatype' )}" />

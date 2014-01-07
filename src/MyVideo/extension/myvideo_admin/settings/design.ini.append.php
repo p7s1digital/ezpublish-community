@@ -12,5 +12,6 @@ BackendCSSFileList[]=jquery-ui.css
 BackendJavaScriptList[]=jquery-ui.min.js
 BackendJavaScriptList[]=purl.js
 BackendJavaScriptList[]=myvideo_admin.js
+BackendJavaScriptList[]=jquery.filedrop.js
 
 */

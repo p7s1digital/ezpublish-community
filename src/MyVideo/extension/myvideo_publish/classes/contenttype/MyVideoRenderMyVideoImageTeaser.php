@@ -25,6 +25,7 @@ class MyVideoRenderMyVideoImageTeaser extends MyVideoRendererBase implements MyV
         $this->copyFieldContent('as_no_follow', $data);
         $this->copyFieldContent('hide_title', $data);
         $this->copyFieldContent('hide_playbutton', $data);
+        $this->copyFieldContent('stage_direct_link', $data);
         $this->copyFieldContent('image', $data, false, array('src', 'width', 'height'));
         $this->copyFieldContent('cover', $data, false, array('cover'));
         $data['icon'] = MyVideoIcon::generateIconString($default);

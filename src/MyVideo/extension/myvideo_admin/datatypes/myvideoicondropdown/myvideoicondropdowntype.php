@@ -216,6 +216,8 @@ class MyVideoicondropdowntype extends eZDataType
 
     public static function getIconName($dropDownKey)
     {
+        // default to first map entry if obsolete content given
+        $dropDownKey = 0;
         $keyMap = self::buildKeyMap();
         /* @todo check renderer for icon-drop-down method mapDropDownKeyToChar() is called with passed array-parameter*/
         if (is_array($dropDownKey) &&
@@ -223,9 +225,6 @@ class MyVideoicondropdowntype extends eZDataType
             !empty($dropDownKey["selected_keys"])
         ) {
             $dropDownKey = $dropDownKey["selected_keys"][0];
-        } elseif (!array_key_exists($dropDownKey, $keyMap)) {
-            // default to first map entry if obsolete content given
-            $dropDownKey = 0;
         }
         $iconName = $keyMap[$dropDownKey];
         return $iconName;
