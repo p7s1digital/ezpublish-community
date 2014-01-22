@@ -53,6 +53,7 @@ class EzPublishKernel extends Kernel
             new EzPublishRestBundle(),
             new EzSystemsCommentsBundle(),
             new WhiteOctoberPagerfantaBundle(),
+            new MyVideo\Bundle\ApiExtensionBundle\MyVideoApiExtensionBundle(),
         );
 
         switch ( $this->getEnvironment() )
